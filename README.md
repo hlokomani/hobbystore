@@ -1,5 +1,5 @@
 # HarmonyHub
-
+A store for all guitarists worldwide to find everything that they need.
 ## Installation
 
 1. Clone the repository:
@@ -26,7 +26,4 @@
 ## Acknowledgments
 
 - This component was designed based on UX research of popular websites including Takealot, TED, and DesignModo.
-- Special thanks to the Anthropic team for their assistance in the development process.
-```
 
-This README provides an overview of the project, its features, installation instructions, usage guidelines, customization options, and other relevant information. You may want to adjust certain details like the repository URL, license information, or specific acknowledgments to match your project's exact specifications.
