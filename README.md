@@ -9,7 +9,7 @@ A store for all guitarists worldwide to find everything that they need.
 
 2. Navigate to the project directory:
    ```
-   cd harmonyhub-auth
+   cd hobbystore
    ```
 
 3. Install dependencies:
