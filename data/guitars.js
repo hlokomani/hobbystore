@@ -9,7 +9,7 @@ const guitars = [
         "features": ["Fast Delivery", "Best Price"],
         "price": "R1,199",
         "special": "Up to 20% off",
-        "discountedPrice": "959.20"
+        "discountedPrice": "R959.20"
     },
     {
         "id": 2,
@@ -21,7 +21,7 @@ const guitars = [
         "features": ["Fast Delivery", "Best Seller"],
         "price": "R2,499",
         "special": "Up to 15% off",
-        "discountedPrice": "2,124.15"
+        "discountedPrice": "R2,124.15"
     },
     {
         "id": 3,
@@ -33,7 +33,7 @@ const guitars = [
         "features": ["Best Price"],
         "price": "R899",
         "special": "Up to 25% off",
-        "discountedPrice": "674.25"
+        "discountedPrice": "R674.25"
     },
     {
         "id": 4,
@@ -45,7 +45,7 @@ const guitars = [
         "features": ["Fast Delivery", "Best Price"],
         "price": "R1,299",
         "special": "Up to 30% off",
-        "discountedPrice": "909.30"
+        "discountedPrice": "R909.30"
     },
     {
         "id": 5,
@@ -57,7 +57,7 @@ const guitars = [
         "features": ["Best Price"],
         "price": "R349",
         "special": "Up to 10% off",
-        "discountedPrice": "314.10"
+        "discountedPrice": "R314.10"
     },
     {
         "id": 6,
@@ -69,7 +69,7 @@ const guitars = [
         "features": ["Best Price"],
         "price": "R649",
         "special": "Up to 18% off",
-        "discountedPrice": "532.18"
+        "discountedPrice": "R532.18"
     },
     {
         "id": 7,
@@ -81,7 +81,7 @@ const guitars = [
         "features": ["Fast Delivery"],
         "price": "R799",
         "special": "Up to 22% off",
-        "discountedPrice": "622.22"
+        "discountedPrice": "R622.22"
     },
     {
         "id": 8,
@@ -93,7 +93,7 @@ const guitars = [
         "features": ["Best Seller"],
         "price": "R499",
         "special": "Up to 12% off",
-        "discountedPrice": "439.12"
+        "discountedPrice": "R439.12"
     }
 ];
 
