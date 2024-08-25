@@ -3,6 +3,7 @@
 import Lottie from 'lottie-react'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { GoogleIcon, AppleIcon } from '@/public/Icons'
 
 export default function Login() {
@@ -12,6 +13,7 @@ export default function Login() {
   const [rememberMe, setRememberMe] = useState(false)
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter();
 
   useEffect(() => {
     fetch('https://lottie.host/76becb05-0074-4eff-a1e8-b64365256897/Kbg6HN1aXy.json')
@@ -26,7 +28,7 @@ export default function Login() {
     try{
         await new Promise(resolve => setTimeout(resolve, 1500))
         console.log('Login attempt with:', email, password)
-        router.push('/') 
+        router.push('/products');
     }catch(err){
         setError('An error occurred. Please try again.')
     }finally{
