@@ -7,7 +7,7 @@ const guitars = [
         "rating": 4.8,
         "reviews": 524,
         "features": ["Fast Delivery", "Best Price"],
-        "price": "1,199",
+        "price": "R1,199",
         "special": "Up to 20% off",
         "discountedPrice": "959.20"
     },
@@ -19,7 +19,7 @@ const guitars = [
         "rating": 4.9,
         "reviews": 673,
         "features": ["Fast Delivery", "Best Seller"],
-        "price": "2,499",
+        "price": "R2,499",
         "special": "Up to 15% off",
         "discountedPrice": "2,124.15"
     },
@@ -31,7 +31,7 @@ const guitars = [
         "rating": 4.7,
         "reviews": 310,
         "features": ["Best Price"],
-        "price": "899",
+        "price": "R899",
         "special": "Up to 25% off",
         "discountedPrice": "674.25"
     },
@@ -43,7 +43,7 @@ const guitars = [
         "rating": 4.9,
         "reviews": 435,
         "features": ["Fast Delivery", "Best Price"],
-        "price": "1,299",
+        "price": "R1,299",
         "special": "Up to 30% off",
         "discountedPrice": "909.30"
     },
@@ -55,7 +55,7 @@ const guitars = [
         "rating": 4.6,
         "reviews": 280,
         "features": ["Best Price"],
-        "price": "349",
+        "price": "R349",
         "special": "Up to 10% off",
         "discountedPrice": "314.10"
     },
@@ -67,7 +67,7 @@ const guitars = [
         "rating": 4.7,
         "reviews": 198,
         "features": ["Best Price"],
-        "price": "649",
+        "price": "R649",
         "special": "Up to 18% off",
         "discountedPrice": "532.18"
     },
@@ -79,7 +79,7 @@ const guitars = [
         "rating": 4.8,
         "reviews": 376,
         "features": ["Fast Delivery"],
-        "price": "799",
+        "price": "R799",
         "special": "Up to 22% off",
         "discountedPrice": "622.22"
     },
@@ -91,7 +91,7 @@ const guitars = [
         "rating": 4.7,
         "reviews": 259,
         "features": ["Best Seller"],
-        "price": "499",
+        "price": "R499",
         "special": "Up to 12% off",
         "discountedPrice": "439.12"
     }
