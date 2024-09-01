@@ -11,7 +11,8 @@ import {
     FILTER_BY_FEATURES,
     SEARCH_BY_TITLE,
     SEARCH_BY_NAME,
-    SEARCH_BY_TITLE_OR_NAME
+    SEARCH_BY_TITLE_OR_NAME,
+    CHOOSE_CATEGORY
 } from '../actions/actionTypes';
 import guitars from '@/data/guitars';
 
@@ -33,6 +34,12 @@ const filterByBrand = (guitars, brand) => guitars.filter(guitar => guitar.title.
 const filterByType = (guitars, type) => guitars.filter(guitar => guitar.title.includes(type));
 const filterByColor = (guitars, color) => guitars.filter(guitar => guitar.title.includes(color));
 const filterByFeatures = (guitars, features) => guitars.filter(guitar => features.every(feature => guitar.features.includes(feature)));
+const filterByCategory = (guitars, category) => {
+    if (category === "Electric | Solid Body") {
+        return guitars.filter(guitar => guitar.category === "Electric" || guitar.category === "Solid Body");
+    }
+    return guitars.filter(guitar => guitar.category.includes(category));
+};
 
 const searchByTitle = (guitars, title) => guitars.filter(guitar => guitar.title.toLowerCase().includes(title.toLowerCase()));
 const searchByName = (guitars, name) => guitars.filter(guitar => guitar.name.toLowerCase().includes(name.toLowerCase()));
@@ -116,6 +123,12 @@ const reducer = (state = initialState, action) => {
             };
         case FILTER_BY_FEATURES:
             filteredGuitars = filterByFeatures(state.guitars, action.payload);
+            return {
+                ...state,
+                filteredGuitars: applySort(filteredGuitars, state.sortFunction)
+            };
+        case CHOOSE_CATEGORY:
+            filteredGuitars = filterByCategory(state.guitars, action.payload);
             return {
                 ...state,
                 filteredGuitars: applySort(filteredGuitars, state.sortFunction)
