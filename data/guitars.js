@@ -1,8 +1,8 @@
 const guitars = [
     {
         "id": 1,
-        "name": "Guitar 1",
-        "image": "/assets/images/guitar_1.jpeg",
+        "name": "Sunburst Strat",
+        "image": "/assets/images/guitar_1.png",
         "title": "Fender Stratocaster, 3-Color Sunburst, Maple Fingerboard",
         "rating": 4.8,
         "reviews": 524,
@@ -13,8 +13,8 @@ const guitars = [
     },
     {
         "id": 2,
-        "name": "Guitar 2",
-        "image": "/assets/images/guitar_2.jpeg",
+        "name": "Bourbon Les Paul",
+        "image": "/assets/images/guitar_2.png",
         "title": "Gibson Les Paul Standard, Bourbon Burst",
         "rating": 4.9,
         "reviews": 673,
@@ -25,8 +25,8 @@ const guitars = [
     },
     {
         "id": 3,
-        "name": "Guitar 3",
-        "image": "/assets/images/guitar_3.jpeg",
+        "name": "Desert RG550",
+        "image": "/assets/images/guitar_3.png",
         "title": "Ibanez RG550, Desert Sun Yellow",
         "rating": 4.7,
         "reviews": 310,
@@ -37,8 +37,8 @@ const guitars = [
     },
     {
         "id": 4,
-        "name": "Guitar 4",
-        "image": "/assets/images/guitar_4.jpeg",
+        "name": "Trampas Custom 24",
+        "image": "/assets/images/guitar_4.png",
         "title": "PRS SE Custom 24, Trampas Green",
         "rating": 4.9,
         "reviews": 435,
@@ -49,8 +49,8 @@ const guitars = [
     },
     {
         "id": 5,
-        "name": "Guitar 5",
-        "image": "/assets/images/guitar_5.jpeg",
+        "name": "Old Violin Pacifica",
+        "image": "/assets/images/guitar_5.png",
         "title": "Yamaha Pacifica 112V, Old Violin Sunburst",
         "rating": 4.6,
         "reviews": 280,
@@ -61,8 +61,8 @@ const guitars = [
     },
     {
         "id": 6,
-        "name": "Guitar 6",
-        "image": "/assets/images/guitar_6.jpeg",
+        "name": "Black Soloist",
+        "image": "/assets/images/guitar_6.png",
         "title": "Jackson Soloist SLX, Black",
         "rating": 4.7,
         "reviews": 198,
@@ -73,8 +73,8 @@ const guitars = [
     },
     {
         "id": 7,
-        "name": "Guitar 7",
-        "image": "/assets/images/guitar_7.jpeg",
+        "name": "Flagstaff Gretsch",
+        "image": "/assets/images/guitar_7.png",
         "title": "Gretsch G2622 Streamliner, Flagstaff Sunset",
         "rating": 4.8,
         "reviews": 376,
@@ -85,8 +85,8 @@ const guitars = [
     },
     {
         "id": 8,
-        "name": "Guitar 8",
-        "image": "/assets/images/guitar_8.jpeg",
+        "name": "Ebony SG",
+        "image": "/assets/images/guitar_8.png",
         "title": "Epiphone SG Standard, Ebony",
         "rating": 4.7,
         "reviews": 259,

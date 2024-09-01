@@ -1,16 +1,22 @@
 'use client';
 import React from 'react';
-import Link from 'next/link';
+import { addToCart } from '@/store/actions/addToCartAction';
 import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
 import DropDownSort from '@/components/DropDown/DropDownSort';
 import DropDownFilter from '@/components/DropDown/DropDownFilter';
 import SearchBar from '@/components/Search/SearchBar';
-import { useSelector } from 'react-redux';
+import Favourite from '@/components/Favourite';
+import { useSelector, useDispatch } from 'react-redux';
 
 const ProductPage = () => {
     const filteredGuitars = useSelector(state => state.filter.filteredGuitars);
-    
+    const dispatch = useDispatch();
+
+    const handleAddToCart = (guitarId) => {
+        dispatch(addToCart(guitarId));
+    };
+
     return (
         <>
             <Header />
@@ -48,7 +54,10 @@ const ProductPage = () => {
                     </div>
                     <div className="mb-4">
                             {filteredGuitars.slice(0, 8).map((guitar) => (
-                                <div key={guitar.id} className="m-5 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+                                <div
+                                    key={guitar.id}
+                                    className="m-5 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 hover:shadow-md transition duration-300"
+                                >
                                     <div className='flex'>
                                         <div className="h-56 w-1/2">
                                             <a href={`/product/${guitar.id}`}>
@@ -81,22 +90,20 @@ const ProductPage = () => {
                                                             <path stroke="currentColor" strokeWidth="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                                         </svg>
                                                     </button>
-                                                    <button type="button" data-tooltip-target="tooltip-add-to-favorites" className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                                        <span className="sr-only">Add to Favorites</span>
-                                                        <svg className="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6C6.5 1 1 8 5.8 13l6.2 7 6.2-7C23 8 17.5 1 12 6Z" />
-                                                        </svg>
-                                                    </button>
+                                                    <Favourite />
                                                 </div>
                                             </div>
                                             <div className="mt-4 flex items-center justify-between gap-4">
                                                 <p className="text-2xl font-extrabold leading-tight text-gray-900 dark:text-white">{guitar.price}</p>
-                                                <Link href={`/product/${guitar.id}`} className="inline-flex items-center rounded-lg bg-browner px-5 py-2.5 text-sm font-medium text-white hover:bg-dark_brown focus:outline-none focus:ring-4 focus:ring-browner dark:bg-browner dark:hover:bg-browner dark:focus:ring-browner">
+                                                <button 
+                                                    onClick={() => handleAddToCart(guitar.id)} 
+                                                    className="inline-flex items-center rounded-lg bg-browner px-5 py-2.5 text-sm font-medium text-white hover:bg-dark_brown focus:outline-none focus:ring-4 focus:ring-browner dark:bg-browner dark:hover:bg-browner dark:focus:ring-browner"
+                                                >
                                                     <svg className="-ms-2 me-2 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6" />
                                                     </svg>
                                                     Add to cart
-                                                </Link>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
