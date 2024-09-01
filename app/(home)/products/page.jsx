@@ -49,7 +49,6 @@ const ProductPage = () => {
                         </div>
                         <div className="flex items-center space-x-4">
                             <SearchBar />
-                            <DropDownCategory />
                             <DropDownFilter />
                             <DropDownSort />
                         </div>

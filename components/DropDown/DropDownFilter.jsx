@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { filterByPrice, filterByBrand, filterByType, filterByColor, filterByFeatures } from '@/store/actions/filterActions';
+import { filterByCategory, filterByPrice, filterByBrand, filterByType, filterByColor, filterByFeatures } from '@/store/actions/filterActions';
 
 const DropDownFilter = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isOpenInner, setIsOpenInner] = useState(false);
     const dispatch = useDispatch();
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
+        setIsOpenInner(false);
+    };
+
+    const toggleDropdownInner = () => {
+        setIsOpenInner(!isOpenInner);
     };
 
     const handleFilter = (filterAction) => {
@@ -63,6 +69,38 @@ const DropDownFilter = () => {
                         <button onClick={() => handleFilter(filterByFeatures(['Fast Delivery']))} className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
                             Feature: Fast Delivery
                         </button>
+                    </li>
+                    <li className="relative group">
+                        <button 
+                            onClick={toggleDropdownInner}
+                            className="inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                            Category
+                            <svg class="w-2.5 h-2.5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4"/>
+                            </svg>
+                        </button>
+                        <ul className={`absolute ${isOpenInner ? 'block' : 'hidden'} bg-white dark:bg-gray-700 shadow-lg rounded-md mt-1 right-[-150px] w-60 transition-opacity duration-1000 ease-in-out opacity-0 group-hover:opacity-100`}>
+                            <li>
+                                <button onClick={() => handleFilter(filterByCategory("Electric | Solid Body"))} className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    All
+                                </button>
+                            </li>
+                            <li>
+                                <button onClick={() => handleFilter(filterByCategory("Electric"))} className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    Electric
+                                </button>
+                            </li>
+                            <li>
+                                <button onClick={() => handleFilter(filterByCategory("Solid Body"))} className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    Solid Body
+                                </button>
+                            </li>
+                            <li>
+                                <button onClick={() => handleFilter(filterByCategory("Semi-Hollow"))} className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    Semi-Hollow
+                                </button>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>

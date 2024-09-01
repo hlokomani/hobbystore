@@ -4,10 +4,15 @@ import { filterByCategory } from '@/store/actions/filterActions';
 
 const DropDownCategory = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isOpenInner, setIsOpenInner] = useState(false);
     const dispatch = useDispatch();
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
+    };
+
+    const toggleDropdownInner = () => {
+        setIsOpenInner(!isOpenInner);
     };
 
     const handleFilter = (filterAction) => {
