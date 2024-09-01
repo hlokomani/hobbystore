@@ -5,6 +5,7 @@ import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
 import DropDownSort from '@/components/DropDown/DropDownSort';
 import DropDownFilter from '@/components/DropDown/DropDownFilter';
+import DropDownCategory from '@/components/DropDown/DropDownCategory';
 import SearchBar from '@/components/Search/SearchBar';
 import Favourite from '@/components/Favourite';
 import { useSelector, useDispatch } from 'react-redux';
@@ -48,6 +49,7 @@ const ProductPage = () => {
                         </div>
                         <div className="flex items-center space-x-4">
                             <SearchBar />
+                            <DropDownCategory />
                             <DropDownFilter />
                             <DropDownSort />
                         </div>

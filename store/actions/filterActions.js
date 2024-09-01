@@ -3,7 +3,8 @@ import {
     FILTER_BY_BRAND,
     FILTER_BY_TYPE,
     FILTER_BY_COLOR,
-    FILTER_BY_FEATURES
+    FILTER_BY_FEATURES,
+    CHOOSE_CATEGORY
 } from './actionTypes';
 
 export const filterByPrice = (priceRange) => ({
@@ -29,4 +30,9 @@ export const filterByColor = (color) => ({
 export const filterByFeatures = (features) => ({
     type: FILTER_BY_FEATURES,
     payload: features
+});
+
+export const filterByCategory = (category) => ({
+    type: CHOOSE_CATEGORY,
+    payload: category
 });
