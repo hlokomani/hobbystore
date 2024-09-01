@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { filterByPrice, filterByBrand, filterByType, filterByColor, filterByFeatures } from '@/store/actions/filterActions';
 
 const DropDownFilter = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const dispatch = useDispatch();
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
+    };
+
+    const handleFilter = (filterAction) => {
+        dispatch(filterAction);
+        toggleDropdown();
     };
 
     return (
@@ -27,43 +35,33 @@ const DropDownFilter = () => {
 
             <div
                 id="dropdownSort1"
-                className={`absolute z-50 ${isOpen ? 'block' : 'hidden'} w-40 mt-2 divide-y divide-gray-100 rounded-lg bg-white shadow dark:bg-gray-700`}
+                className={`absolute z-50 ${isOpen ? 'block' : 'hidden'} w-60 mt-2 divide-y divide-gray-100 rounded-lg bg-white shadow dark:bg-gray-700`}
                 data-popper-placement="bottom"
             >
-                <ul className="p-2 text-left text-sm font-medium text-gray-500 dark:text-gray-400" aria-labelledby="sortDropdownButton1">
+                <ul className="p-2 text-left text-sm font-medium text-gray-500 dark:text-gray-400" aria-labelledby="filterDropdownButton1">
                     <li>
-                        <button
-                            className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                            Price
+                        <button onClick={() => handleFilter(filterByPrice([0, 1000]))} className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                            Price: 0 - 1000
                         </button>
                     </li>
                     <li>
-                        <button
-                            className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                            Brand
+                        <button onClick={() => handleFilter(filterByBrand('Fender'))} className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                            Brand: Fender
                         </button>
                     </li>
                     <li>
-                        <button
-                            className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                            Type
+                        <button onClick={() => handleFilter(filterByType('Stratocaster'))} className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                            Type: Stratocaster
                         </button>
                     </li>
                     <li>
-                        <button
-                            className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                            Color
+                        <button onClick={() => handleFilter(filterByColor('Sunburst'))} className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                            Color: Sunburst
                         </button>
                     </li>
                     <li>
-                        <button
-                            className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                            Special Features
+                        <button onClick={() => handleFilter(filterByFeatures(['Fast Delivery']))} className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                            Feature: Fast Delivery
                         </button>
                     </li>
                 </ul>

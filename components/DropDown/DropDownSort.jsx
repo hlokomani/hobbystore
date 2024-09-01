@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { sortByPriceAsc, sortByPriceDesc, sortByDiscount, sortByReviews, sortByRating } from '@/store/actions/sortActions';
 
 const DropDownSort = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const dispatch = useDispatch();
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
+    };
+
+    const handleSort = (sortAction) => {
+        dispatch(sortAction);
+        toggleDropdown();
     };
 
     return (
@@ -32,34 +40,29 @@ const DropDownSort = () => {
             >
                 <ul className="p-2 text-left text-sm font-medium text-gray-500 dark:text-gray-400" aria-labelledby="sortDropdownButton1">
                     <li>
-                        <a href="/products" className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
-                            The most popular
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/products" className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
-                            Newest
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/products" className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                        <button onClick={() => handleSort(sortByPriceAsc())} className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
                             Increasing price
-                        </a>
+                        </button>
                     </li>
                     <li>
-                        <a href="/products" className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                        <button onClick={() => handleSort(sortByPriceDesc())} className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
                             Decreasing price
-                        </a>
+                        </button>
                     </li>
                     <li>
-                        <a href="/products" className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                        <button onClick={() => handleSort(sortByReviews())} className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
                             No. reviews
-                        </a>
+                        </button>
                     </li>
                     <li>
-                        <a href="/products" className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                        <button onClick={() => handleSort(sortByRating())} className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                            Rating
+                        </button>
+                    </li>
+                    <li>
+                        <button onClick={() => handleSort(sortByDiscount())} className="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
                             Discount %
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </div>
