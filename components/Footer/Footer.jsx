@@ -7,14 +7,14 @@ const Footer = () => {
             <div className="flex max-lg:flex-col items-center justify-between gap-6">
 
                 <ul className="flex flex-wrap justify-center gap-x-6 gap-4">
-                    <li><a href="/products" className="text-xl hover:text-gray-600">
+                    <li><a href="javascript:void(0)" className="text-xl hover:text-gray-600">
                         <svg xmlns="http://www.w3.org/2000/svg" className="inline w-7 h-7" viewBox="0 0 512 512">
                             <path fill="#1877f2" d="M512 256c0 127.78-93.62 233.69-216 252.89V330h59.65L367 256h-71v-48.02c0-20.25 9.92-39.98 41.72-39.98H370v-63s-29.3-5-57.31-5c-58.47 0-96.69 35.44-96.69 99.6V256h-65v74h65v178.89C93.62 489.69 0 383.78 0 256 0 114.62 114.62 0 256 0s256 114.62 256 256z" data-original="#1877f2" />
                             <path fill="#fff" d="M355.65 330 367 256h-71v-48.021c0-20.245 9.918-39.979 41.719-39.979H370v-63s-29.296-5-57.305-5C254.219 100 216 135.44 216 199.6V256h-65v74h65v178.889c13.034 2.045 26.392 3.111 40 3.111s26.966-1.066 40-3.111V330z" data-original="#ffffff" />
                         </svg>
                     </a></li>
 
-                    <li><a href="/products" className="text-xl hover:text-gray-600">
+                    <li><a href="javascript:void(0)" className="text-xl hover:text-gray-600">
                         <svg xmlns="http://www.w3.org/2000/svg" className="inline w-7 h-7" viewBox="0 0 176 176">
                             <g data-name="Layer 2">
                                 <rect width="176" height="176" fill="#0077b5" data-original="#0077b5" rx="24" />
@@ -23,7 +23,7 @@ const Footer = () => {
                         </svg>
                     </a></li>
 
-                    <li><a href="/products" className="text-xl hover:text-gray-600">
+                    <li><a href="javascript:void(0)" className="text-xl hover:text-gray-600">
                         <svg xmlns="http://www.w3.org/2000/svg" className="inline w-7 h-7" viewBox="0 0 24 24">
                             <linearGradient id="a" x1="-37.106" x2="-26.555" y1="-72.705" y2="-84.047" gradientTransform="matrix(0 -1.982 -1.844 0 -132.522 -51.077)" gradientUnits="userSpaceOnUse">
                                 <stop offset="0" stopColor="#fd5" />
@@ -38,9 +38,9 @@ const Footer = () => {
 
                 <p className='text-base text-gray-600 max-lg:order-1'>© HarmonyHub. All rights reserved.</p>
                 <ul className="flex gap-x-6 gap-y-2 flex-wrap">
-                    <li><a href="/products" className="text-gray-600 hover:text-black text-base">Terms of Service</a></li>
-                    <li><a href="/products" className="text-gray-600 hover:text-black text-base">Privacy Policy</a></li>
-                    <li><a href="/products" className="text-gray-600 hover:text-black text-base">Contact</a></li>
+                    <li><a href="javascript:void(0)" className="text-gray-600 hover:text-black text-base">Terms of Service</a></li>
+                    <li><a href="javascript:void(0)" className="text-gray-600 hover:text-black text-base">Privacy Policy</a></li>
+                    <li><a href="javascript:void(0)" className="text-gray-600 hover:text-black text-base">Contact</a></li>
                 </ul>
             </div>
         </footer>
