@@ -20,9 +20,9 @@ const SellerDashboardPage = () => {
   const renderTabContent = () => {
     switch(activeTab) {
       case 'analytics': return <SellerAnalytics />;
+      case 'add-product': return <ProductListingForm />;
       case 'inventory': return <InventoryManagement />;
       case 'orders': return <OrderManagement />;
-      case 'add-product': return <ProductListingForm />;
       default: return null;
     }
   };
@@ -37,7 +37,7 @@ const SellerDashboardPage = () => {
               {sellerName ? `Welcome back, ${sellerName}!` : 'Loading...'}
             </h2>
             <div className="flex border-b border-[#8B4513] mb-6">
-              {['Analytics', 'Inventory', 'Orders', 'Add Product'].map((tab) => (
+              {['Analytics','Add Product', 'Inventory', 'Orders'].map((tab) => (
                 <button
                   key={tab}
                   className={`py-2 px-4 font-medium ${
