@@ -92,17 +92,17 @@ const SellerAnalytics = () => (
           <table className="min-w-full">
             <thead>
               <tr>
-                <th className="py-2 px-4 text-left">Product</th>
-                <th className="py-2 px-4 text-left">Sales</th>
-                <th className="py-2 px-4 text-left">Revenue (ZAR)</th>
+                <th className="py-2 px-4 text-left text-[#8B4513]">Product</th>
+                <th className="py-2 px-4 text-left text-[#8B4513]">Sales</th>
+                <th className="py-2 px-4 text-left text-[#8B4513]">Revenue (ZAR)</th>
               </tr>
             </thead>
             <tbody>
               {topProducts.map((product) => (
                 <tr key={product.id}>
-                  <td className="py-2 px-4">{product.name}</td>
-                  <td className="py-2 px-4">{product.sales}</td>
-                  <td className="py-2 px-4">R {product.revenue.toFixed(2)}</td>
+                  <td className="py-2 px-4 text-browner">{product.name}</td>
+                  <td className="py-2 px-4 text-browner">{product.sales}</td>
+                  <td className="py-2 px-4 text-browner">R {product.revenue.toFixed(2)}</td>
                 </tr>
               ))}
             </tbody>
