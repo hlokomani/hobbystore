@@ -13,7 +13,7 @@ const SellerDashboardPage = () => {
   useEffect(() => {
     // Simulating fetching seller's name from an API
     setTimeout(() => {
-      setSellerName('Sarah');
+      setSellerName('Zandi');
     }, 1000);
   }, []);
 
