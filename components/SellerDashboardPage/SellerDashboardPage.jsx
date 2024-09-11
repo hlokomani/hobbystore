@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import SellerAnalytics from '../SellerAnalytics/SellerAnalytics';
@@ -8,6 +8,14 @@ import ProductListingForm from '../ProductListingForm/ProductListingForm';
 
 const SellerDashboardPage = () => {
   const [activeTab, setActiveTab] = useState('analytics');
+  const [sellerName, setSellerName] = useState('');
+
+  useEffect(() => {
+    // Simulating fetching seller's name from an API
+    setTimeout(() => {
+      setSellerName('Sarah');
+    }, 1000);
+  }, []);
 
   const renderTabContent = () => {
     switch(activeTab) {
@@ -25,7 +33,9 @@ const SellerDashboardPage = () => {
       <main className="flex-grow p-6">
         <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
           <div className="p-6">
-            <h2 className="text-2xl font-serif text-[#8B4513] mb-6">Seller Dashboard</h2>
+            <h2 className="text-2xl font-serif text-[#8B4513] mb-6">
+              {sellerName ? `Welcome back, ${sellerName}!` : 'Loading...'}
+            </h2>
             <div className="flex border-b border-[#8B4513] mb-6">
               {['Analytics', 'Inventory', 'Orders', 'Add Product'].map((tab) => (
                 <button
