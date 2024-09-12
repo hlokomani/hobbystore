@@ -36,6 +36,15 @@ const Modal = ({ isOpen, onClose, onConfirm, message }) => {
   );
 };
 
+const ValidationMessage = ({ message }) => (
+  <div className="mt-1 flex items-center">
+    <svg className="h-5 w-5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <p className="ml-2 text-sm text-yellow-700">{message}</p>
+  </div>
+);
+
 const ProductListingForm = () => {
   const initialFormData = {
     id: '',
@@ -59,6 +68,7 @@ const ProductListingForm = () => {
   const [isReviewing, setIsReviewing] = useState(false);
   const [listingMode, setListingMode] = useState('single');
   const [bulkData, setBulkData] = useState([]);
+  const [errors, setErrors] = useState({});
   const { CSVReader } = useCSVReader();
 
   const totalSteps = listingMode === 'single' ? 5 : 2; // 2 steps for bulk upload
@@ -67,6 +77,26 @@ const ProductListingForm = () => {
     const isDirty = Object.values(formData).some(value => value !== '' && value !== null);
     setIsFormDirty(isDirty);
   }, [formData]);
+
+  const validateField = (name, value) => {
+    let error = '';
+    switch (name) {
+      case 'id':
+        if (!value) error = 'Product ID is required';
+        else if (!/^[A-Za-z0-9-_]+$/.test(value)) error = 'Product ID should only contain letters, numbers, hyphens, and underscores';
+        break;
+      case 'title':
+        if (!value) error = 'Title is required';
+        else if (value.length < 3) error = 'Title should be at least 3 characters long';
+        break;
+      case 'price':
+        if (!value) error = 'Price is required';
+        else if (isNaN(value) || Number(value) <= 0) error = 'Price should be a positive number';
+        break;
+      // Add more cases for other fields as needed
+    }
+    return error;
+  };
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
@@ -82,6 +112,13 @@ const ProductListingForm = () => {
         [name]: value
       }));
     }
+    
+    // Validate the field
+    const error = validateField(name, value);
+    setErrors(prevErrors => ({
+      ...prevErrors,
+      [name]: error
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -251,15 +288,30 @@ const ProductListingForm = () => {
             <div className="space-y-4">
               <div>
                 <label htmlFor="id" className="block text-sm font-medium text-[#8B4513]">Product ID</label>
-                <input
-                  type="text"
-                  id="id"
-                  name="id"
-                  value={formData.id}
-                  onChange={handleChange}
-                  required
-                  className="mt-1 block w-full text-lg border-gray-300 rounded-md shadow-sm focus:ring-[#8B4513] focus:border-[#8B4513] text-gray-900"
-                />
+                <div className="mt-1 relative rounded-md shadow-sm">
+                  <input
+                    type="text"
+                    id="id"
+                    name="id"
+                    value={formData.id}
+                    onChange={handleChange}
+                    required
+                    className={`block w-full pr-10 text-lg border-gray-300 rounded-md focus:ring-[#8B4513] focus:border-[#8B4513] text-gray-900 ${errors.id ? 'border-red-300' : ''}`}
+                  />
+                  <Tooltip id="id-tooltip" place="right" effect="solid">
+                    Product ID should only contain letters, numbers, hyphens, and underscores
+                  </Tooltip>
+                  <button
+                    type="button"
+                    data-tooltip-id="id-tooltip"
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-500"
+                  >
+                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+                {errors.id && <ValidationMessage message={errors.id} />}
               </div>
               <div>
                 <label htmlFor="title" className="block text-sm font-medium text-[#8B4513]">Title</label>
@@ -270,8 +322,9 @@ const ProductListingForm = () => {
                   value={formData.title}
                   onChange={handleChange}
                   required
-                  className="mt-1 block w-full text-lg border-gray-300 rounded-md shadow-sm focus:ring-[#8B4513] focus:border-[#8B4513] text-gray-900"
+                  className={`mt-1 block w-full text-lg border-gray-300 rounded-md shadow-sm focus:ring-[#8B4513] focus:border-[#8B4513] text-gray-900 ${errors.title ? 'border-red-300' : ''}`}
                 />
+                {errors.title && <ValidationMessage message={errors.title} />}
               </div>
               <div>
                 <label htmlFor="description" className="block text-sm font-medium text-[#8B4513]">Description</label>
@@ -282,8 +335,9 @@ const ProductListingForm = () => {
                   onChange={handleChange}
                   rows="3"
                   required
-                  className="mt-1 block w-full text-lg border-gray-300 rounded-md shadow-sm focus:ring-[#8B4513] focus:border-[#8B4513] text-gray-900"
+                  className={`mt-1 block w-full text-lg border-gray-300 rounded-md shadow-sm focus:ring-[#8B4513] focus:border-[#8B4513] text-gray-900 ${errors.description ? 'border-red-300' : ''}`}
                 ></textarea>
+                {errors.description && <ValidationMessage message={errors.description} />}
               </div>
             </div>
           </>
@@ -302,8 +356,9 @@ const ProductListingForm = () => {
                   value={formData.link}
                   onChange={handleChange}
                   required
-                  className="mt-1 block w-full text-lg border-gray-300 rounded-md shadow-sm focus:ring-[#8B4513] focus:border-[#8B4513] text-gray-900"
+                  className={`mt-1 block w-full text-lg border-gray-300 rounded-md shadow-sm focus:ring-[#8B4513] focus:border-[#8B4513] text-gray-900 ${errors.link ? 'border-red-300' : ''}`}
                 />
+                {errors.link && <ValidationMessage message={errors.link} />}
               </div>
               <div>
                 <label htmlFor="brand" className="block text-sm font-medium text-[#8B4513]">Brand</label>
@@ -314,8 +369,9 @@ const ProductListingForm = () => {
                   value={formData.brand}
                   onChange={handleChange}
                   required
-                  className="mt-1 block w-full text-lg border-gray-300 rounded-md shadow-sm focus:ring-[#8B4513] focus:border-[#8B4513] text-gray-900"
+                  className={`mt-1 block w-full text-lg border-gray-300 rounded-md shadow-sm focus:ring-[#8B4513] focus:border-[#8B4513] text-gray-900 ${errors.brand ? 'border-red-300' : ''}`}
                 />
+                {errors.brand && <ValidationMessage message={errors.brand} />}
               </div>
               <div>
                 <label htmlFor="condition" className="block text-sm font-medium text-[#8B4513]">Condition</label>
@@ -325,13 +381,14 @@ const ProductListingForm = () => {
                   value={formData.condition}
                   onChange={handleChange}
                   required
-                  className="mt-1 block w-full text-lg border-gray-300 rounded-md shadow-sm focus:ring-[#8B4513] focus:border-[#8B4513] text-gray-900"
+                  className={`mt-1 block w-full text-lg border-gray-300 rounded-md shadow-sm focus:ring-[#8B4513] focus:border-[#8B4513] text-gray-900 ${errors.condition ? 'border-red-300' : ''}`}
                 >
                   <option value="">Select condition</option>
                   <option value="new">New</option>
                   <option value="refurbished">Refurbished</option>
                   <option value="used">Used</option>
                 </select>
+                {errors.condition && <ValidationMessage message={errors.condition} />}
               </div>
             </div>
           </>
@@ -349,13 +406,14 @@ const ProductListingForm = () => {
                   value={formData.availability}
                   onChange={handleChange}
                   required
-                  className="mt-1 block w-full text-lg border-gray-300 rounded-md shadow-sm focus:ring-[#8B4513] focus:border-[#8B4513] text-gray-900"
+                  className={`mt-1 block w-full text-lg border-gray-300 rounded-md shadow-sm focus:ring-[#8B4513] focus:border-[#8B4513] text-gray-900 ${errors.availability ? 'border-red-300' : ''}`}
                 >
                   <option value="">Select availability</option>
                   <option value="in stock">In Stock</option>
                   <option value="out of stock">Out of Stock</option>
                   <option value="preorder">Preorder</option>
                 </select>
+                {errors.availability && <ValidationMessage message={errors.availability} />}
               </div>
               <div>
                 <label htmlFor="availability_date" className="block text-sm font-medium text-[#8B4513]">Availability Date</label>
@@ -365,8 +423,9 @@ const ProductListingForm = () => {
                   name="availability_date"
                   value={formData.availability_date}
                   onChange={handleChange}
-                  className="mt-1 block w-full text-lg border-gray-300 rounded-md shadow-sm focus:ring-[#8B4513] focus:border-[#8B4513] text-gray-900"
+                  className={`mt-1 block w-full text-lg border-gray-300 rounded-md shadow-sm focus:ring-[#8B4513] focus:border-[#8B4513] text-gray-900 ${errors.availability_date ? 'border-red-300' : ''}`}
                 />
+                {errors.availability_date && <ValidationMessage message={errors.availability_date} />}
               </div>
               <div>
                 <label htmlFor="price" className="block text-sm font-medium text-[#8B4513]">Price (R)</label>
@@ -377,8 +436,9 @@ const ProductListingForm = () => {
                   value={formData.price}
                   onChange={handleChange}
                   required
-                  className="mt-1 block w-full text-lg border-gray-300 rounded-md shadow-sm focus:ring-[#8B4513] focus:border-[#8B4513] text-gray-900"
+                  className={`mt-1 block w-full text-lg border-gray-300 rounded-md shadow-sm focus:ring-[#8B4513] focus:border-[#8B4513] text-gray-900 ${errors.price ? 'border-red-300' : ''}`}
                 />
+                {errors.price && <ValidationMessage message={errors.price} />}
               </div>
             </div>
           </>
