@@ -27,6 +27,13 @@ const SellerDashboardPage = () => {
     }
   };
 
+  const tabs = [
+    { id: 'analytics', name: 'Analytics', icon: 'M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z' },
+    { id: 'add-product', name: 'Add Product', icon: 'M12 6v6m0 0v6m0-6h6m-6 0H6' },
+    { id: 'inventory', name: 'Inventory', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2' },
+    { id: 'orders', name: 'Orders', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4' },
+  ];
+
   return (
     <div className="flex flex-col min-h-screen bg-[#FFEFD5]">
       <Header />
@@ -51,40 +58,36 @@ const SellerDashboardPage = () => {
                 </div>
               </li>
             </ol>
-            <button
-              onClick={() => setActiveTab('add-product')}
-              className="bg-[#8B4513] text-white p-2 rounded-full hover:bg-[#A0522D] transition-colors"
-              title="Add Product"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-              </svg>
-            </button>
           </nav>
-          <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="p-6">
-              <h2 className="text-2xl font-serif text-[#8B4513] mb-2">
-                {sellerName ? `Welcome back, ${sellerName}!` : 'Loading...'}
+          <div className="flex bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="w-64 bg-[#8B4513] p-6">
+              <h2 className="text-2xl font-serif text-white mb-6">
+                {sellerName ? `Welcome, ${sellerName}!` : 'Loading...'}
               </h2>
-              <p className="text-gray-600 mb-6">
-                Manage your products, track your sales, and grow your business with our seller dashboard.
-              </p>
-              <div className="flex border-b border-[#8B4513] mb-6">
-                {['Analytics','Add Product', 'Inventory', 'Orders'].map((tab) => (
+              <nav>
+                {tabs.map((tab) => (
                   <button
-                    key={tab}
-                    className={`py-2 px-4 font-medium ${
-                      activeTab === tab.toLowerCase().replace(' ', '-')
-                        ? 'text-[#8B4513] border-b-2 border-[#8B4513]'
-                        : 'text-gray-500 hover:text-[#8B4513]'
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`w-full flex items-center p-3 mb-2 rounded-md transition-colors ${
+                      activeTab === tab.id
+                        ? 'bg-[#A0522D] text-white'
+                        : 'text-white hover:bg-[#A0522D]'
                     }`}
-                    onClick={() => setActiveTab(tab.toLowerCase().replace(' ', '-'))}
                   >
-                    {tab}
+                    <svg className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={tab.icon} />
+                    </svg>
+                    {tab.name}
                   </button>
                 ))}
-              </div>
-              <div className="mt-6">
+              </nav>
+            </div>
+            <div className="flex-grow p-6">
+              <h3 className="text-xl font-semibold text-[#8B4513] mb-4">
+                {tabs.find(tab => tab.id === activeTab)?.name}
+              </h3>
+              <div className="mt-4">
                 {renderTabContent()}
               </div>
             </div>
