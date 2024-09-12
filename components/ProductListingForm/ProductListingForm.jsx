@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
+import { useCSVReader } from 'react-papaparse';
+import { Tooltip } from 'react-tooltip';
 
 const Modal = ({ isOpen, onClose, onConfirm, message }) => {
   if (!isOpen) return null;
@@ -55,7 +57,11 @@ const ProductListingForm = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [isFormDirty, setIsFormDirty] = useState(false);
   const [isReviewing, setIsReviewing] = useState(false);
-  const totalSteps = 5; // Added a review step
+  const [listingMode, setListingMode] = useState('single');
+  const [bulkData, setBulkData] = useState([]);
+  const { CSVReader } = useCSVReader();
+
+  const totalSteps = listingMode === 'single' ? 5 : 2; // 2 steps for bulk upload
 
   useEffect(() => {
     const isDirty = Object.values(formData).some(value => value !== '' && value !== null);
@@ -80,10 +86,17 @@ const ProductListingForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!isReviewing) {
-      setIsReviewing(true);
+    if (listingMode === 'single') {
+      if (!isReviewing) {
+        setIsReviewing(true);
+      } else {
+        console.log('Form submitted:', formData);
+        setIsSubmitted(true);
+        triggerConfetti();
+      }
     } else {
-      console.log('Form submitted:', formData);
+      // Bulk upload submission
+      console.log('Bulk data submitted:', bulkData);
       setIsSubmitted(true);
       triggerConfetti();
     }
@@ -119,7 +132,94 @@ const ProductListingForm = () => {
     setStep(totalSteps - 1);
   };
 
-  const renderStep = () => {
+  const handleCSVUpload = (results) => {
+    setBulkData(results.data);
+    setStep(2); // Move to review step after CSV upload
+  };
+
+  const renderBulkUpload = () => {
+    return (
+      <div className="space-y-4">
+        <h3 className="text-xl font-semibold text-[#8B4513] mb-4">Bulk Product Upload</h3>
+        <div>
+          <CSVReader
+            onUploadAccepted={handleCSVUpload}
+            config={{
+              header: true,
+              skipEmptyLines: true,
+            }}
+          >
+            {({ getRootProps, acceptedFile }) => (
+              <>
+                <div {...getRootProps()} className="border-2 border-dashed border-[#8B4513] p-4 text-center cursor-pointer">
+                  {acceptedFile ? (
+                    <div className="text-[#8B4513]">{acceptedFile.name}</div>
+                  ) : (
+                    <p className="text-[#8B4513]">Drop CSV file here or click to upload</p>
+                  )}
+                </div>
+                <Tooltip id="csv-format-tooltip" place="bottom" effect="solid">
+                  CSV format: id, title, description, link, availability, availability_date, price, brand, condition, image_url
+                </Tooltip>
+                <button
+                  type="button"
+                  onClick={(e) => e.preventDefault()}
+                  data-tooltip-id="csv-format-tooltip"
+                  className="mt-2 text-sm text-[#8B4513] underline"
+                >
+                  View CSV format
+                </button>
+              </>
+            )}
+          </CSVReader>
+        </div>
+        {bulkData.length > 0 && (
+          <p className="text-green-600">{bulkData.length} products ready for upload</p>
+        )}
+      </div>
+    );
+  };
+
+  const renderForm = () => {
+    if (listingMode === 'bulk') {
+      if (step === 1) {
+        return renderBulkUpload();
+      } else {
+        return (
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-[#8B4513] mb-4">Review Bulk Upload</h3>
+            <p className="text-[#8B4513]">{bulkData.length} products are ready to be uploaded.</p>
+            <p className="text-[#8B4513]">Please review the data before submitting.</p>
+            <div className="mt-4 border border-[#8B4513] rounded-md p-4 max-h-60 overflow-y-auto">
+              <table className="w-full text-sm text-left text-[#8B4513]">
+                <thead>
+                  <tr>
+                    <th className="px-2 py-1">ID</th>
+                    <th className="px-2 py-1">Title</th>
+                    <th className="px-2 py-1">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {bulkData.slice(0, 5).map((product, index) => (
+                    <tr key={index} className="border-b border-[#8B4513] last:border-b-0">
+                      <td className="px-2 py-1">{product.id}</td>
+                      <td className="px-2 py-1">{product.title}</td>
+                      <td className="px-2 py-1">{product.price}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              {bulkData.length > 5 && (
+                <p className="mt-2 text-center text-[#8B4513]">
+                  ... and {bulkData.length - 5} more products
+                </p>
+              )}
+            </div>
+          </div>
+        );
+      }
+    }
+
     if (isReviewing) {
       return (
         <>
@@ -320,10 +420,17 @@ const ProductListingForm = () => {
   if (isSubmitted) {
     return (
       <div className="flex flex-col items-center justify-center h-full">
-        <h2 className="text-3xl font-bold text-[#8B4513] mb-4 animate-bounce">Product Successfully Listed!</h2>
-        <p className="text-xl text-[#A0522D] mb-8">Your item will be live soon.</p>
+        <h2 className="text-3xl font-bold text-[#8B4513] mb-4 animate-bounce">
+          {listingMode === 'single' ? "Product Successfully Listed!" : "Products Successfully Uploaded!"}
+        </h2>
+        <p className="text-xl text-[#A0522D] mb-8">
+          {listingMode === 'single' ? "Your item will be live soon." : "Your items will be live soon."}
+        </p>
         <button
-          onClick={resetForm}
+          onClick={() => {
+            setListingMode('single');
+            resetForm();
+          }}
           className="px-6 py-3 bg-[#8B4513] text-white rounded-md hover:bg-[#A0522D] transition-colors text-lg font-semibold"
         >
           List Another Product
@@ -333,68 +440,117 @@ const ProductListingForm = () => {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit} className="space-y-4 bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-2xl font-serif text-[#8B4513] mb-6">
-          {isReviewing ? "Review Your Product" : "Add New Product"}
-        </h2>
-        {renderStep()}
-        <div className="flex justify-between mt-6">
-          {(step > 1 || isReviewing) && (
-            <button
-              type="button"
-              onClick={isReviewing ? goBackToEdit : prevStep}
-              className="px-4 py-2 border border-[#8B4513] text-[#8B4513] rounded-md hover:bg-[#8B4513] hover:text-white transition-colors"
-            >
-              {isReviewing ? "Edit" : "Previous"}
-            </button>
-          )}
-          {step < totalSteps && !isReviewing ? (
-            <button
-              type="button"
-              onClick={nextStep}
-              className="px-4 py-2 bg-[#8B4513] text-white rounded-md hover:bg-[#A0522D] transition-colors"
-            >
-              Next
-            </button>
-          ) : (
-            <button
-              type="submit"
-              className="px-4 py-2 bg-[#8B4513] text-white rounded-md hover:bg-[#A0522D] transition-colors"
-            >
-              {isReviewing ? "Submit Listing" : "Review"}
-            </button>
-          )}
-        </div>
-        {!isReviewing && (
-          <div className="mt-4">
-            <p className="text-sm text-gray-500">Step {step} of {totalSteps}</p>
-            <div className="w-full bg-gray-200 rounded-full h-2.5 mt-2">
-              <div 
-                className="bg-[#8B4513] h-2.5 rounded-full transition-all duration-300 ease-in-out" 
-                style={{width: `${(step / totalSteps) * 100}%`}}
-              ></div>
-            </div>
-          </div>
-        )}
-        {!isReviewing && (
+    <form onSubmit={handleSubmit} className="space-y-4 bg-white p-6 rounded-lg shadow-md">
+      <h2 className="text-2xl font-serif text-[#8B4513] mb-6">
+        {isReviewing ? "Review Your Product" : "Add New Product"}
+      </h2>
+
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-[#8B4513] mb-2">Listing Mode</label>
+        <div className="flex space-x-4">
           <button
             type="button"
-            onClick={openDiscardModal}
-            disabled={!isFormDirty}
-            className={`mt-4 px-4 py-2 border border-red-500 text-red-500 rounded-md hover:bg-red-500 hover:text-white transition-colors ${!isFormDirty ? 'opacity-50 cursor-not-allowed' : ''}`}
+            onClick={() => {
+              setListingMode('single');
+              setStep(1);
+              setBulkData([]);
+            }}
+            className={`px-4 py-2 rounded-md ${
+              listingMode === 'single' ? 'bg-[#8B4513] text-white' : 'bg-gray-200 text-[#8B4513]'
+            }`}
+            data-tooltip-id="single-mode-tooltip"
           >
-            Discard Product
+            Single Product
+          </button>
+          <Tooltip id="single-mode-tooltip" place="top" effect="solid">
+            List products one at a time with detailed information
+          </Tooltip>
+
+          <button
+            type="button"
+            onClick={() => {
+              setListingMode('bulk');
+              setStep(1);
+              setFormData(initialFormData);
+            }}
+            className={`px-4 py-2 rounded-md ${
+              listingMode === 'bulk' ? 'bg-[#8B4513] text-white' : 'bg-gray-200 text-[#8B4513]'
+            }`}
+            data-tooltip-id="bulk-mode-tooltip"
+          >
+            Bulk Upload
+          </button>
+          <Tooltip id="bulk-mode-tooltip" place="top" effect="solid">
+            Upload multiple products at once using a CSV file
+          </Tooltip>
+        </div>
+      </div>
+
+      {renderForm()}
+
+      <div className="flex justify-between mt-6">
+        {step > 1 && (
+          <button
+            type="button"
+            onClick={() => setStep(step - 1)}
+            className="px-4 py-2 border border-[#8B4513] text-[#8B4513] rounded-md hover:bg-[#8B4513] hover:text-white transition-colors"
+          >
+            Previous
           </button>
         )}
-      </form>
+        {step < totalSteps ? (
+          <button
+            type="button"
+            onClick={() => setStep(step + 1)}
+            className="px-4 py-2 bg-[#8B4513] text-white rounded-md hover:bg-[#A0522D] transition-colors"
+          >
+            Next
+          </button>
+        ) : (
+          <button
+            type="submit"
+            className="px-4 py-2 bg-[#8B4513] text-white rounded-md hover:bg-[#A0522D] transition-colors"
+          >
+            {listingMode === 'single' ? "Submit Listing" : "Upload Products"}
+          </button>
+        )}
+      </div>
+
+      {/* Progress bar */}
+      <div className="mt-4">
+        <p className="text-sm text-gray-500">Step {step} of {totalSteps}</p>
+        <div className="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+          <div 
+            className="bg-[#8B4513] h-2.5 rounded-full transition-all duration-300 ease-in-out" 
+            style={{width: `${(step / totalSteps) * 100}%`}}
+          ></div>
+        </div>
+      </div>
+
+      <Tooltip id="listing-guide-tooltip" place="top" effect="solid">
+        <ul className="list-disc list-inside space-y-2 text-sm">
+          <li>Ensure all required fields are filled out accurately.</li>
+          <li>Use high-quality images (recommended size: 1000x1000 pixels).</li>
+          <li>Write clear and detailed product descriptions.</li>
+          <li>Double-check pricing and availability information.</li>
+          <li>For bulk uploads, follow the CSV format provided.</li>
+        </ul>
+      </Tooltip>
+      <button
+        type="button"
+        data-tooltip-id="listing-guide-tooltip"
+        className="text-sm text-[#8B4513] underline"
+      >
+        View Listing Guide
+      </button>
+
       <Modal
         isOpen={isModalOpen}
         onClose={closeDiscardModal}
         onConfirm={discardProduct}
         message="Are you sure you want to discard this product?"
       />
-    </>
+    </form>
   );
 };
 
