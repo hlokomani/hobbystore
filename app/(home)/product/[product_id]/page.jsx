@@ -56,16 +56,16 @@ const SingleProduct = () => {
 
                                 <div className="flex flex-wrap gap-4 justify-center mx-auto mt-4">
                                     <Link href={`/product/${((product_id + 1) % 7) + 1}`}>
-                                        <img src={`/assets/images/guitar_${((product_id + 1) % 7) + 1}.jpeg`} alt="Product1" className="w-20 h-20 cursor-pointer rounded-md outline" />
+                                        <img src={`/assets/images/guitar_${((product_id + 1) % 7) + 1}.png`} alt="Product1" className="w-20 h-20 cursor-pointer rounded-md outline" />
                                     </Link>
                                     <Link href={`/product/${((product_id + 2) % 7) + 1}`}>
-                                        <img src={`/assets/images/guitar_${((product_id + 2) % 7) + 1}.jpeg`} alt="Product2"  className="w-20 h-20 cursor-pointer rounded-md outline" />
+                                        <img src={`/assets/images/guitar_${((product_id + 2) % 7) + 1}.png`} alt="Product2"  className="w-20 h-20 cursor-pointer rounded-md outline" />
                                     </Link>
                                     <Link href={`/product/${((product_id + 3) % 7) + 1}`}>
-                                        <img src={`/assets/images/guitar_${((product_id + 3) % 7) + 1}.jpeg`} alt="Product3"  className="w-20 h-20 cursor-pointer rounded-md outline" />
+                                        <img src={`/assets/images/guitar_${((product_id + 3) % 7) + 1}.png`} alt="Product3"  className="w-20 h-20 cursor-pointer rounded-md outline" />
                                     </Link>
                                     <Link href={`/product/${((product_id + 4) % 7) + 1}`}>
-                                        <img src={`/assets/images/guitar_${((product_id + 4) % 7) + 1}.jpeg`} alt="Product4"  className="w-20 h-20 cursor-pointer rounded-md outline" />
+                                        <img src={`/assets/images/guitar_${((product_id + 4) % 7) + 1}.png`} alt="Product4"  className="w-20 h-20 cursor-pointer rounded-md outline" />
                                     </Link>
                                 </div>
                             </div>
