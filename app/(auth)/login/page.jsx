@@ -1,6 +1,7 @@
 'use client'
-
+import Image from 'next/image'
 import Lottie from 'lottie-react'
+import NavigationItem from "@/components/Home/navigation/NavigationItem";
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'

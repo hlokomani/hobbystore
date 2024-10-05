@@ -9,7 +9,7 @@ const Header = () => {
     const cart = useSelector(state => state.cart.cart);
 
     const handleLogout = () => {
-        router.push('/login');
+        router.push('/');
     };
 
     return (
