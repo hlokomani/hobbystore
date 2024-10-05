@@ -1,3 +1,5 @@
+'use client';
+
 import { PlusIcon } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import NavigationContainer from "./NavigationContainer";

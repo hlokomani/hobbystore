@@ -1,7 +1,5 @@
-
 'use client';
-import React, { useEffect } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React from 'react';
 
 export function More() {
     return (

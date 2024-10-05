@@ -1,7 +1,6 @@
-'use client'
-// import Link from 'next/link'
+'use client';
+
 import Image from 'next/image'
-// import Lottie from 'lottie-react'
 import NavigationItem from "@/components/Home/navigation/NavigationItem";
 import { ArrowRight, CheckIcon } from "lucide-react";
 import { Footer } from "@/components/Home/Footer";
@@ -17,12 +16,8 @@ export default function Home() {
       .then(data => setAnimationData(data))
   }, [])
 
-  const handleSigninClick = () => {
-    window.location.href = '/login';
-  };
-
   const handleStartToday = () => {
-    window.location.href = '/login';
+    router.push('/products');
   };
 
   return (
@@ -40,7 +35,7 @@ export default function Home() {
           <div className="text-gray-800 font-semibold font-semibold md:flex gap-9 text-xl">
             <div className="hover:opacity-60 hover:cursor-pointer text-xl">Updates</div>
             <div className="hover:opacity-60 hover:cursor-pointer text-xl">Pricing</div>
-            <div className="text-[#F74F39] hover:cursor-pointer" onClick={ handleSigninClick }>
+            <div className="text-[#F74F39] hover:cursor-pointer" onClick={ handleStartToday }>
               Sign in{" "}
               <span>
                 <ArrowRight

@@ -1,7 +1,20 @@
-import { Link } from "react-router-dom";
+'use client';
+
+import { useEffect, useState } from "react";
+import Link from "react-router-dom";
 import { apps, otherLinks, social, hub } from "./footer-data";
 
 export function Footer() {
+	const [isClient, setIsClient] = useState(false);
+
+	useEffect(() => {
+		setIsClient(true);
+	}, []);
+
+	if (!isClient) {
+		return null;
+	}
+	
 	return (
 		<footer>
 			<div className="bg-[#20202e]">
@@ -21,7 +34,7 @@ export function Footer() {
 							{hub.map(({ label, href }) => (
 								<Link
 									key={label}
-									to="/home"
+									href={href}
 									className="text-[15px] min-h-[30px] flex items-center justify-start hover:opacity-50 duration-300"
 								>
 									{label}
@@ -30,10 +43,10 @@ export function Footer() {
 						</div>
 						<div className="flex flex-col flex-1 items-stretch gap-1.5">
 							<p className="w-full mb-2.5 min-h-[30px]" />
-							{otherLinks.map(({ label, href }) => (
+							{otherLinks.map(({ label }) => (
 								<Link
 									key={label}
-									to="/home"
+									href="/home"
 									className="text-[15px] min-h-[30px] flex items-center justify-start hover:opacity-50 duration-300"
 								>
 									{label}
@@ -44,10 +57,10 @@ export function Footer() {
 					<div className="flex flex-1">
 						<div className="flex flex-col flex-1 items-stretch gap-1.5">
 							<p className="text-lg font-bold mb-2.5 text-[#2590f2]">App</p>
-							{apps.map(({ label, href }) => (
+							{apps.map(({ label }) => (
 								<Link
 									key={label}
-									to="/home"
+									href="/home"
 									className="text-[15px] min-h-[30px] flex items-center justify-start hover:opacity-50 duration-300"
 								>
 									{label}
@@ -56,10 +69,10 @@ export function Footer() {
 						</div>
 						<div className="flex flex-col flex-1 items-stretch gap-1.5">
 							<p className="text-lg font-bold mb-2.5 text-[#2a966f]">Social</p>
-							{social.map(({ label, href }) => (
+							{social.map(({ label }) => (
 								<Link
 									key={label}
-									to="/home"
+									href="/home"
 									className="text-[15px] min-h-[30px] flex items-center justify-start hover:opacity-50 duration-300"
 								>
 									{label}
@@ -75,7 +88,7 @@ export function Footer() {
 									Pick Your <br className="lg:block hidden" /> Calendar
 								</p>
 								<Link
-									to={"/"}
+									href={"/"}
 									className="bg-[#f84f39] text-white hover:opacity-80 duration-300 text-sm font-semibold px-[14px] py-[5px] rounded-full"
 								>
 									v 1.16.0
