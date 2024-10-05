@@ -1,95 +1,95 @@
 export const hub = [
 	{
 		label: "Home",
-		href: "/",
+		href: "/"
 	},
 	{
-		label: "Updates",
-		href: "/",
+		label: "New Arrivals",
+		href: "/"
 	},
 	{
-		label: "Pricing",
-		href: "/",
+		label: "Acoustic Guitars",
+		href: "/"
 	},
 	{
-		label: "Careers",
-		href: "/",
+		label: "Electric Guitars",
+		href: "/"
 	},
 	{
-		label: "Suggestions",
-		href: "/",
+		label: "Guitar Accessories",
+		href: "/"
 	},
 	{
-		label: "Help Center",
-		href: "/",
+		label: "Customer Support",
+		href: "/"
 	},
 ];
 
 export const otherLinks = [
 	{
-		label: "Go Pro",
-		href: "/",
+		label: "Special Offers",
+		href: "/"
 	},
 	{
-		label: "Open Source",
-		href: "/",
+		label: "Guitar Brands",
+		href: "/"
 	},
 	{
-		label: "Cookies",
-		href: "/",
+		label: "Return Policy",
+		href: "/"
 	},
 	{
-		label: "Privacy",
-		href: "/",
+		label: "Privacy Policy",
+		href: "/"
 	},
 	{
-		label: "Terms",
-		href: "/",
+		label: "Terms & Conditions",
+		href: "/"
 	},
 	{
-		label: "Contact",
-		href: "/",
+		label: "Contact Us",
+		href: "/"
 	},
 ];
 
 export const apps = [
 	{
-		label: "Mac",
-		href: "/",
+		label: "Mac App",
+		href: "/"
 	},
 	{
-		label: "Web",
-		href: "/",
+		label: "Web App",
+		href: "/"
 	},
 	{
-		label: "iOS",
-		href: "/",
+		label: "iOS App",
+		href: "/"
 	},
 	{
-		label: "Android",
-		href: "/",
+		label: "Android App",
+		href: "/"
 	},
 	{
-		label: "Sign in",
-		href: "/",
+		label: "Sign In",
+		href: "/"
 	},
 ];
 
 export const social = [
 	{
-		label: "Home",
-		href: "/",
+		label: "Facebook",
+		href: "/"
 	},
 	{
-		label: "About Us",
-		href: "/",
+		label: "Instagram",
+		href: "/"
 	},
 	{
-		label: "Guitar Lessons",
-		href: "/",
+		label: "YouTube",
+		href: "/"
 	},
 	{
-		label: "Contact",
-		href: "/",
+		label: "Twitter",
+		href: "/"
 	},
 ];
