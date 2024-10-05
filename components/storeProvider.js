@@ -6,7 +6,7 @@ import store from '@/store/store';
 export default function StoreProvider({ children }) {
   return (
     <Provider store={store}>
-        {children}
+      {children}
     </Provider>
   );
 }

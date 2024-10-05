@@ -1,6 +1,10 @@
 import { Inter } from "next/font/google";
 import StoreProvider from '@/components/storeProvider';
-import "./globals.css";
+import "@/styles/globals.css";
+import "@/styles/style.css";
+import "@/styles/styles.css";
+import "@/styles/swiper.css";
+import "@/styles/iconsfont.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
