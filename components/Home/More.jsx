@@ -16,17 +16,17 @@ export function More() {
                                 <div class="body-store__item item">
                                     <a href="" class="item__image"><img src="/assets/store/1.jpg" alt=""/></a>
                                     <a href="" class="item__title">The Essential Les Paul</a>
-                                    <div class="item__price">$1,299.00</div>
+                                    <div class="item__price">R1,299.00</div>
                                 </div>
                                 <div class="body-store__item item">
                                     <a href="" class="item__image"><img src="/assets/store/2.jpg" alt=""/></a>
                                     <a href="" class="item__title">J-45 Standard</a>
-                                    <div class="item__price">$1,699.00</div>
+                                    <div class="item__price">R1,699.00</div>
                                 </div>
                                 <div class="body-store__item item">
                                     <a href="" class="item__image"><img src="/assets/store/3.jpg" alt=""/></a>
                                     <a href="" class="item__title">Hummingbird Standard</a>
-                                    <div class="item__price">$2,099.00</div>
+                                    <div class="item__price">R2,099.00</div>
                                 </div>
                             </div>
                         </div>

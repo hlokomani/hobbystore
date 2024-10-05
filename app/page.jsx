@@ -3,12 +3,14 @@
 import Image from 'next/image'
 import NavigationItem from "@/components/Home/navigation/NavigationItem";
 import { ArrowRight, CheckIcon } from "lucide-react";
-import { Footer } from "@/components/Home/Footer";
+import { Footer_Home } from "@/components/Home/Footer_Home";
 import { useEffect, useState } from 'react'
 import { More } from "@/components/Home/More";
+import { useRouter } from 'next/navigation';
  
 export default function Home() {
   const [animationData, setAnimationData] = useState(null)
+  const router = useRouter();
 
   useEffect(() => {
     fetch('https://lottie.host/2f333900-c6a7-4602-9109-5818f2db6693/4cId9BEMJt.json')
@@ -17,7 +19,7 @@ export default function Home() {
   }, [])
 
   const handleStartToday = () => {
-    router.push('/products');
+    router.push('/login');
   };
 
   return (
@@ -334,7 +336,7 @@ export default function Home() {
         </div>
       </div>
       <More />
-      <Footer/>
+      <Footer_Home/>
     </>
   )
 }

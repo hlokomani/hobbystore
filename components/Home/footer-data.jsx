@@ -1,95 +1,95 @@
 export const hub = [
 	{
 		label: "Home",
-		href: "/"
+		href: "javascript:void(0)",
 	},
 	{
 		label: "New Arrivals",
-		href: "/"
+		href: "javascript:void(0)",
 	},
 	{
 		label: "Acoustic Guitars",
-		href: "/"
+		href: "javascript:void(0)",
 	},
 	{
 		label: "Electric Guitars",
-		href: "/"
+		href: "javascript:void(0)",
 	},
 	{
 		label: "Guitar Accessories",
-		href: "/"
+		href: "javascript:void(0)",
 	},
 	{
 		label: "Customer Support",
-		href: "/"
+		href: "javascript:void(0)",
 	},
 ];
 
 export const otherLinks = [
 	{
 		label: "Special Offers",
-		href: "/"
+		href: "javascript:void(0)",
 	},
 	{
 		label: "Guitar Brands",
-		href: "/"
+		href: "javascript:void(0)",
 	},
 	{
 		label: "Return Policy",
-		href: "/"
+		href: "javascript:void(0)",
 	},
 	{
 		label: "Privacy Policy",
-		href: "/"
+		href: "javascript:void(0)",
 	},
 	{
 		label: "Terms & Conditions",
-		href: "/"
+		href: "javascript:void(0)",
 	},
 	{
 		label: "Contact Us",
-		href: "/"
+		href: "javascript:void(0)",
 	},
 ];
 
 export const apps = [
 	{
 		label: "Mac App",
-		href: "/"
+		href: "javascript:void(0)",
 	},
 	{
 		label: "Web App",
-		href: "/"
+		href: "javascript:void(0)",
 	},
 	{
 		label: "iOS App",
-		href: "/"
+		href: "javascript:void(0)",
 	},
 	{
 		label: "Android App",
-		href: "/"
+		href: "javascript:void(0)",
 	},
 	{
 		label: "Sign In",
-		href: "/"
+		href: "javascript:void(0)",
 	},
 ];
 
 export const social = [
 	{
 		label: "Facebook",
-		href: "/"
+		href: "javascript:void(0)",
 	},
 	{
 		label: "Instagram",
-		href: "/"
+		href: "javascript:void(0)",
 	},
 	{
 		label: "YouTube",
-		href: "/"
+		href: "javascript:void(0)",
 	},
 	{
 		label: "Twitter",
-		href: "/"
+		href: "javascript:void(0)",
 	},
 ];
