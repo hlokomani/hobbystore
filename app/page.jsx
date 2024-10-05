@@ -9,14 +9,7 @@ import { More } from "@/components/Home/More";
 import { useRouter } from 'next/navigation';
  
 export default function Home() {
-  const [animationData, setAnimationData] = useState(null)
   const router = useRouter();
-
-  useEffect(() => {
-    fetch('https://lottie.host/2f333900-c6a7-4602-9109-5818f2db6693/4cId9BEMJt.json')
-      .then(response => response.json())
-      .then(data => setAnimationData(data))
-  }, [])
 
   const handleStartToday = () => {
     router.push('/login');
