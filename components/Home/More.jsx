@@ -132,7 +132,7 @@ export function More() {
                             </div>
                         </div>
                         <div class="favorite__image">
-                            <img src="/assets/favorite/favorite-image.jpg" alt="Favorite Guitars"/>
+                            <img src="/assets/favorite/favorite-image.png" alt="Favorite Guitars"/>
                         </div>
                     </div>
                 </section>
