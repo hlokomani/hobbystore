@@ -212,7 +212,7 @@ export default function Home() {
                   </div>
 
                   <div className="flex gap-3">
-                    <Image width={40} height={40} className="rounded-full size-7" src="/google.webp" />
+                    <Image width={40} height={40} className="rounded-full size-7" src="/assets/brands/3.png" />
                     <Image width={40} height={40}
                       className="rounded-full size-7"
                       src="/assets/play/guitarist_1.png"
@@ -234,7 +234,7 @@ export default function Home() {
                   </div>
 
                   <div className="flex gap-3">
-                    <Image width={40} height={40} className="rounded-full size-7" src="/google.webp" />
+                    <Image width={40} height={40} className="rounded-full size-7" src="/assets/brands/5.png" />
                     <Image width={40} height={40}
                       className="rounded-full size-7"
                       src="/assets/play/guitarist_3.png"
@@ -256,7 +256,6 @@ export default function Home() {
                   </div>
 
                   <div className="flex gap-3">
-                    <Image width={40} height={40} className="rounded-full size-7" src="/linear.webp" />
                     <Image width={40} height={40}
                       className="rounded-full size-7"
                       src="/assets/play/guitarist_4.png"
@@ -278,6 +277,7 @@ export default function Home() {
                   </div>
 
                   <div className="flex gap-3">
+                    <Image width={40} height={40} className="rounded-full size-7" src="/assets/brands/2.png" />
                     <Image width={40} height={40} className="rounded-full size-7" src="/assets/play/guitarist_2.png" />
                   </div>
                 </div>
@@ -293,7 +293,7 @@ export default function Home() {
                   </div>
 
                   <div className="flex gap-3">
-                    <Image width={40} height={40} className="rounded-full size-7" src="/slack.png" />
+                    <Image width={40} height={40} className="rounded-full size-7" src="/assets/brands/1.png" />
                     <Image width={40} height={40}
                       className="rounded-full size-7"
                       src="/assets/play/guitarist_5.png"
