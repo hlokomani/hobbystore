@@ -85,7 +85,7 @@ export function Footer() {
 							<p className="text-lg font-bold mb-2.5 text-[#8f89fa]">Updates</p>
 							<div className="rounded-2xl pt-4 pl-5 lg:pr-[50px] pr-5 pb-5 bg-[#2c2c3d] hover:bg-[#303041] w-full hover:scale-105 duration-300">
 								<p className="text-[#f84f39] text-[30px] mb-4 font-semibold">
-									Pick Your <br className="lg:block hidden" /> Calendar
+									Pick Your <br className="lg:block hidden" /> Guitar
 								</p>
 								<Link
 									href={"/"}
