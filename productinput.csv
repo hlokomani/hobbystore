@@ -1,0 +1,4 @@
+id,title,description,link,availability,availability_date,price,brand,condition,image_url
+PROD001,Handcrafted Wooden Bowl,Beautiful hand-carved wooden bowl made from sustainable oak,https://example.com/wooden-bowl,in stock,2023-06-01,299.99,EcoWood,new,https://example.com/images/wooden-bowl.jpg
+PROD002,Vintage Leather Satchel,Genuine leather satchel with antique brass fittings,https://example.com/leather-satchel,in stock,2023-06-01,159.99,RetroLeather,used,https://example.com/images/leather-satchel.jpg
+PROD003,Handwoven Wool Rug,Traditional pattern wool rug handwoven by artisans,https://example.com/wool-rug,preorder,2023-07-15,499.99,ArtisanTextiles,new,https://example.com/images/wool-rug.jpg
