@@ -13,7 +13,7 @@
     "canvas-confetti": "^1.9.3",
     "lottie-react": "^2.4.0",
     "lucide-react": "^0.435.0",
-    "next": "14.2.5",
+    "next": ">=14.2.10",
     "react": "^18",
     "react-dom": "^18",
     "react-papaparse": "^4.4.0",
