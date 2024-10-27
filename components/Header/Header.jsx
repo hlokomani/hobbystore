@@ -41,11 +41,11 @@ const Header = () => {
                 <ul
                     className='lg:flex lg:gap-x-3 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50 ml-5'>
                     <li className='max-lg:border-b max-lg:py-3 px-3'><a href='/products'
-                        className='text-browner hover:text-browner text-[15px] block font-semibold'>Home</a></li>
-                    <li className='max-lg:border-b max-lg:py-3 px-3'><a href='javascript:void(0)'
-                        className='text-[#333] hover:text-browner text-[15px] block font-semibold'>About</a></li>
-                    <li className='max-lg:border-b max-lg:py-3 px-3'><a href='javascript:void(0)'
-                        className='text-[#333] hover:text-browner text-[15px] block font-semibold'>Contact</a></li>
+                        className='text-browner hover:text-browner text-[15px] block font-semibold'>Home</a>
+                    </li>
+                    <li className='max-lg:border-b max-lg:py-3 px-3'><a href='/seller'
+                        className='text-[#333] hover:text-browner text-[15px] block font-semibold'>Dashboard</a>
+                    </li>
                 </ul>
             </div>
         

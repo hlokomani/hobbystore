@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { addToCart } from '@/store/actions/addToCartAction';
+import CheckoutPopup from './CheckoutPopup';
 import { useRouter } from 'next/navigation';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -83,7 +84,7 @@ const Checkout = () => {
                                                 type="button" className="inline-flex w-full items-center justify-center rounded-lg bg-browner px-5 py-2.5 text-sm font-medium  text-white hover:bg-dark_brown focus:outline-none focus:ring-4 focus:ring-browner dark:bg-browner dark:hover:bg-browner dark:focus:ring-browner"
                                             >
                                                 <svg className="-ms-2 me-2 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7h-1M8 7h-.688M13 5v4m-2-2h4" />
+                                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7h-1M8 7h-.688M13 5v4m-2-2h4" />
                                                 </svg>
                                                 Add to cart
                                             </button>
@@ -128,14 +129,14 @@ const Checkout = () => {
                                     </dl>
                                 </div>
 
-                                <a href="#" className="flex w-full items-center justify-center rounded-lg bg-browner px-5 py-2.5 text-sm font-medium text-white hover:bg-dark_brown focus:outline-none focus:ring-4 focus:ring-browner dark:bg-browner dark:hover:bg-browner dark:focus:ring-browner">Proceed to Checkout</a>
+                                <CheckoutPopup />
 
                                 <div className="flex items-center justify-center gap-2">
                                     <span className="text-sm font-normal text-gray-500 dark:text-gray-400"> or </span>
                                     <a href="/products" title="" className="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500">
                                         Continue Shopping
                                         <svg className="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4" />
+                                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 12H5m14 0-4 4m4-4-4-4" />
                                         </svg>
                                     </a>
                                 </div>
