@@ -5,7 +5,6 @@ import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
 import DropDownSort from '@/components/DropDown/DropDownSort';
 import DropDownFilter from '@/components/DropDown/DropDownFilter';
-import DropDownCategory from '@/components/DropDown/DropDownCategory';
 import SearchBar from '@/components/Search/SearchBar';
 import Favourite from '@/components/Favourite';
 import { useSelector, useDispatch } from 'react-redux';
