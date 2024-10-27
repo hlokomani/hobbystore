@@ -9,7 +9,11 @@ const Header = () => {
     const cart = useSelector(state => state.cart.cart);
 
     const handleLogout = () => {
-        router.push('/login');
+        router.push('/');
+    };
+
+    const handleCart = () => {
+        router.push('/checkout');
     };
 
     return (
@@ -35,17 +39,18 @@ const Header = () => {
                 <ul
                     className='lg:flex lg:gap-x-3 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50 ml-5'>
                     <li className='max-lg:border-b max-lg:py-3 px-3'><a href='/products'
-                        className='text-browner hover:text-browner text-[15px] block font-semibold'>Home</a></li>
-                    <li className='max-lg:border-b max-lg:py-3 px-3'><a href='javascript:void(0)'
-                        className='text-[#333] hover:text-browner text-[15px] block font-semibold'>About</a></li>
-                    <li className='max-lg:border-b max-lg:py-3 px-3'><a href='javascript:void(0)'
-                        className='text-[#333] hover:text-browner text-[15px] block font-semibold'>Contact</a></li>
+                        className='text-browner hover:text-browner text-[15px] block font-semibold'>Home</a>
+                    </li>
+                    <li className='max-lg:border-b max-lg:py-3 px-3'><a href='/seller'
+                        className='text-[#333] hover:text-browner text-[15px] block font-semibold'>Dashboard</a>
+                    </li>
                 </ul>
             </div>
         
             <div className="flex gap-x-6 gap-y-4 ml-auto">
                 <div className='flex items-center space-x-8'>
-                    <span className="relative">
+                    <button onClick={handleCart} className="relative">
+                        View Cart 
                         <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="cursor-pointer fill-[#333] inline"
                         viewBox="0 0 512 512">
                         <path
@@ -53,7 +58,7 @@ const Header = () => {
                             data-original="#000000"></path>
                         </svg>
                         <span className="absolute left-auto -ml-1 top-0 rounded-full bg-red-500 px-1 py-0 text-xs text-white">{`${cart.length}`}</span>
-                    </span>
+                    </button>
             
                     <button id="toggleOpen" className='lg:hidden'>
                         <svg className="w-7 h-7" fill="#333" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +69,7 @@ const Header = () => {
                     </button>
                     <button
                         onClick={handleLogout}
-                        className='px-4 py-2 text-sm rounded-full font-bold text-white border-2 border-browner bg-browner transition-all ease-in-out duration-300 hover:bg-transparent hover:text-dark_brown'>Logout
+                        className='px-4 py-2 text-sm rounded-full font-bold text-white border-2 border-browner bg-browner transition-all ease-in-out duration-300 hover:bg-dark_brown'>Logout
                     </button>
                 </div>
             </div>
