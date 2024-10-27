@@ -28,9 +28,9 @@ export default function Home() {
           </div>
           {/* right options */}
           <div className="text-gray-800 font-semibold font-semibold md:flex gap-9 text-xl">
-            <div className="hover:opacity-60 hover:cursor-pointer text-xl">Updates</div>
-            <div className="hover:opacity-60 hover:cursor-pointer text-xl">Pricing</div>
-            <div className="text-[#F74F39] hover:cursor-pointer" onClick={ handleStartToday }>
+            {/* <div className="hover:opacity-60 hover:cursor-pointer text-xl">Updates</div>
+            <div className="hover:opacity-60 hover:cursor-pointer text-xl">Pricing</div> */}
+            <div className="text-[#F74F40] hover:cursor-pointer" onClick={ handleStartToday }>
               Sign in{" "}
               <span>
                 <ArrowRight
@@ -82,19 +82,19 @@ export default function Home() {
 
         <div className="px-5">
           {/* app sample */}
-          <div className="grid w-full grid-cols-4 gap-3 p-3 mx-auto mt-10 border-2 size-96 rounded-2xl border-[#EAE9F3] max-w-[1250px] h-auto mb-10">
+          <div className="grid w-full grid-cols-4 gap-2 p-2 mx-auto mt-10 border-2 size-96 rounded-2xl border-[#EAE9F3] max-w-[1250px] h-auto mb-10">
             {/* col 1 */}
-            <div className="hidden w-full h-full col-span-1 bg-white rounded-2xl lg:block">
+            {/* <div className="hidden w-full h-full col-span-1 bg-white rounded-2xl lg:block">
               {/* rectangles */}
-              <div className="grid grid-cols-2 gap-2 p-3">
+              {/* <div className="grid grid-cols-2 gap-2 p-3">
                 <div className="w-full bg-[#F4F4F8] rounded-xl h-16"></div>
                 <div className="w-full bg-[#F4F4F8] rounded-xl h-16"></div>
                 <div className="w-full bg-[#F4F4F8] rounded-xl h-16"></div>
                 <div className="w-full bg-[#F4F4F8] rounded-xl h-16"></div>
-              </div>
+              </div> */}
 
               {/* fake navigation */}
-              <div className="mt-6">
+              {/* <div className="mt-6">
                 <div className="font-semibold text-gray-500 ms-3">Categories</div>
                 <NavigationItem
                   active={true}
@@ -124,21 +124,21 @@ export default function Home() {
                     <span className="me-3">🏷️</span>Special Offers
                   </p>
                 </NavigationItem>
-              </div>
+              </div> */}
 
               {/* fake user session */}
-              <div className="flex items-end gap-2 px-3 pb-3 h-72">
+              {/* <div className="flex items-end gap-2 px-3 pb-3 h-72">
                 <div className="w-full h-10 bg-gray-200 rounded-full"></div>
                 <Image width={40} height={40}
                   src="/assets/play/guitarist_2.png"
                   alt="profile"
                   className="rounded-full size-10"
                 />
-              </div>
-            </div>
+              </div> */}
+            {/* </div> */}
 
             {/* col mid */}
-            <div className="w-full h-full p-10 bg-white col-span-full lg:col-span-2 rounded-2xl">
+            <div className="w-full h-full p-10 bg-white col-span-full lg:col-span-3 rounded-2xl">
               <div className="flex items-center gap-2 ">
                 <div className="flex -space-x-3 overflow-hidden">
                   <Image width={40} height={40}
