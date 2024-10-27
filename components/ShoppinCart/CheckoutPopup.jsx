@@ -20,7 +20,7 @@ const CheckoutPopup = () => {
       
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-8 rounded-lg shadow-lg dark:bg-gray-800">
+          <div className="relative bg-white p-8 rounded-lg shadow-lg dark:bg-gray-800">
             <button onClick={togglePopup} className="absolute top-4 right-4 text-gray-500 dark:text-gray-400">Close</button>
             <form onSubmit={handleSubmit} className="w-full rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6 lg:max-w-xl lg:p-8">
               <div className="mb-6 grid grid-cols-2 gap-4">
