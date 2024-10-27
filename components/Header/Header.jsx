@@ -8,8 +8,14 @@ const Header = () => {
     const router = useRouter();
     const cart = useSelector(state => state.cart.cart);
 
+    console.log("Cart: ", cart);
+
     const handleLogout = () => {
         router.push('/login');
+    };
+
+    const handleCart = () => {
+        router.push('/checkout');
     };
 
     return (
@@ -45,7 +51,8 @@ const Header = () => {
         
             <div className="flex gap-x-6 gap-y-4 ml-auto">
                 <div className='flex items-center space-x-8'>
-                    <span className="relative">
+                    <button onClick={handleCart} className="relative">
+                        View Cart 
                         <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="cursor-pointer fill-[#333] inline"
                         viewBox="0 0 512 512">
                         <path
@@ -53,7 +60,7 @@ const Header = () => {
                             data-original="#000000"></path>
                         </svg>
                         <span className="absolute left-auto -ml-1 top-0 rounded-full bg-red-500 px-1 py-0 text-xs text-white">{`${cart.length}`}</span>
-                    </span>
+                    </button>
             
                     <button id="toggleOpen" className='lg:hidden'>
                         <svg className="w-7 h-7" fill="#333" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
