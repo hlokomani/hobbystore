@@ -57,6 +57,9 @@ const Header = () => {
 
                 <div className="flex gap-x-6 gap-y-4 ml-auto">
                     <div className='flex items-center space-x-8'>
+                        <li className='max-lg:border-b max-lg:py-3 px-3'><a href='/seller'
+                            className='text-[#333] hover:text-browner text-[15px] block font-semibold'>Dashboard</a>
+                        </li>
                         <button onClick={handleCart} className="relative">
                             View Cart 
                             <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" className="cursor-pointer fill-[#333] inline"
